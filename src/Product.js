@@ -12,11 +12,12 @@ class Product extends Component {
    constructor(props) {
       super(props);
       this.editClickHandler = this.editClickHandler.bind(this);
-      this.state = {editable: false, price:0 }
+      this.state = {editable: false, price:0, available:false }
    }
 
    componentDidMount() {
-      this.setState({price: this.props.vo.price})
+      this.setState({price: this.props.vo.price, available: this.props.vo.available })
+
    }
 
    editClickHandler() {      
@@ -33,7 +34,7 @@ class Product extends Component {
                      <figure>
                         <img className="card-img-top mb-0" src={(this.props.vo.imageUrl === "/no_menu_image.jpg") ? "../assets/img/default.jpg" : this.props.vo.imageUrl } alt="placeholder" />
                         <div className="card-img-overlay p-2">
-                        {this.props.vo.available === true ? <button className="btn btn-success btn-sm rounded-pill py-0">Available</button> : <button className="btn btn-danger btn-sm rounded-pill py-0">Not Available</button>}
+                        {this.state.available === true ? <button className="btn btn-success btn-sm rounded-pill py-0">Available</button> : <button className="btn btn-danger btn-sm rounded-pill py-0">Not Available</button>}
     
                         </div>
                      </figure>
@@ -56,10 +57,10 @@ class Product extends Component {
                   </div>
                   <div className="form-group form-inline">
                      <span>Is Available ?</span>
-                     <input type="Radio" className="form-control ml-2" name="radio1" defaultChecked  />
+                     <input type="Radio" className="form-control ml-2" name="radio1" onClick={e => this.setState({available: true})} defaultChecked={this.props.vo.available === true} />
                      <label className="ml-2">Yes</label>
 
-                     <input type="Radio" className="form-control ml-2" name="radio1" />
+                     <input type="Radio" className="form-control ml-2" name="radio1" onClick={e => this.setState({available: false})} defaultChecked={this.props.vo.available === false} />
                      <label className="ml-2" >No</label>                     
                   </div>
                   </form>
