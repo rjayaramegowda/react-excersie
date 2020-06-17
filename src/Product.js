@@ -12,9 +12,7 @@ class Product extends Component {
    constructor(props) {
       super(props);
       this.editClickHandler = this.editClickHandler.bind(this);
-      this.saveClickHandler = this.saveClickHandler.bind(this);
-
-      this.state = {editable: false, price:1000 }
+      this.state = {editable: false, price:0 }
    }
 
    componentDidMount() {
@@ -23,10 +21,6 @@ class Product extends Component {
 
    editClickHandler() {      
       this.setState({editable: !this.state.editable})
-   }
-
-   saveClickHandler() {
-//       this.setState({editable: !this.state.editable})
    }
    
    render() {
@@ -58,7 +52,7 @@ class Product extends Component {
                   <form id="form1" className={this.state.editable  ? '' : 'd-none' } >
                   <div className="form-group form-inline">
                      <label>Updated New Price</label>
-                     <input type="Number" className="form-control ml-3" defaultValue={this.props.vo.price} />                     
+                     <input type="Number" className="form-control ml-3" onChange={e => this.setState({price: e.target.value})} defaultValue={this.props.vo.price} />                     
                   </div>
                   <div className="form-group form-inline">
                      <span>Is Available ?</span>
@@ -74,8 +68,7 @@ class Product extends Component {
                      <button className="btn btn-primary rounded-pill px-4"><i className="fa fa-spinner fa-spin mr-2" aria-hidden="true" /> Buy Now </button>
                      <button onClick={this.editClickHandler} className="btn btn-warning rounded-pill px-4 ml-2"><i className="fa fa-pencil mr-2" aria-hidden="true" /> Edit
                      </button>
-                     <button onClick={this.saveClickHandler} className="btn btn-success rounded-pill px-4 ml-2"><i className="fa fa-save mr-2" aria-hidden="true" /> Save
-                     </button>
+                     
                   </div>
                </div>
             </div>
