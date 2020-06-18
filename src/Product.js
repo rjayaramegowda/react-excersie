@@ -56,14 +56,17 @@ class Product extends Component {
                      <input type="Number" className="form-control ml-3" onChange={e => this.setState({price: e.target.value})} defaultValue={this.props.vo.price} />                     
                   </div>
                   <div className="form-group form-inline">
-                     <span>Is Available ?</span>
-                     <input type="Radio" className="form-control ml-2" name="radio1" onClick={e => this.setState({available: true})} defaultChecked={this.props.vo.available === true} />
-                     <label className="ml-2">Yes</label>
-
-                     <input type="Radio" className="form-control ml-2" name="radio1" onClick={e => this.setState({available: false})} defaultChecked={this.props.vo.available === false} />
-                     <label className="ml-2" >No</label>                     
+                     <span className="mr-3">Is Available ?</span>
+                     <div className="custom-control custom-radio custom-control-inline">
+                     <input type="radio" id="customRadioInline1" name="customRadioInline1" className="custom-control-input" onClick={e => this.setState({available: true})} defaultChecked={this.props.vo.available === true} />
+                     <label className="custom-control-label" htmlFor="customRadioInline1">Yes</label>
                   </div>
-                  </form>
+                  <div className="custom-control custom-radio custom-control-inline">
+                     <input type="radio" id="customRadioInline2" name="customRadioInline1" className="custom-control-input" onClick={e => this.setState({available: false})} defaultChecked={this.props.vo.available === false} />
+                     <label className="custom-control-label" htmlFor="customRadioInline2">No</label>
+                  </div>                 
+                  </div>
+                                    </form>
 
                   <div className="d-flex">
                      <button className="btn btn-primary rounded-pill px-4"><i className="fa fa-spinner fa-spin mr-2" aria-hidden="true" /> Buy Now </button>

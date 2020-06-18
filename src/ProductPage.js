@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Product from "./Product";
 import menu from "./data.json"
+import ProductsRow from "./ProductsRow";
 
 
 function mapStateToProps(state) {
@@ -16,7 +17,9 @@ class ProductPage extends Component {
     
     return (
       <>      
-        <Product vo={menu[itemId]} />        
+        <Product vo={menu[itemId]} />     
+        <hr />
+        <ProductsRow category={menu[itemId].category}/>       
       </>
     );
   }
