@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import Product from "./Product";
-import menu from "./data.json"
-import ProductsRow from "./ProductsRow";
 
+import menu from "../../data.json"
+
+import Product from "../Product/Product"
+import ProductsRow from "../Product/ProductsRow";
 
 function mapStateToProps(state) {
     return {

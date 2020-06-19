@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
-import Header from './Header';
-import ProductsByCategory from './ProductsByCategory';
-import ProductPage from './ProductPage';
+import Header from '../Header';
+import HomePage from '../HomePage';
+import ProductPage from '../ProductPage';
 
 
 class App extends Component {
@@ -11,7 +11,7 @@ class App extends Component {
     return (
       <Router>
         <Header />  
-        <Route exact path={["/"]} component={ProductsByCategory} />        
+        <Route exact path={["/"]} component={HomePage} />        
         <Route exact path="/p/:itemId" component={ProductPage} /> 
       </Router>
     );

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import ProductsRow from "./ProductsRow";
+import ProductsRow from "../Product/ProductsRow"
 
 function mapStateToProps(state) {
   return {
@@ -8,7 +8,7 @@ function mapStateToProps(state) {
   };
 }
 
-class ProductsByCategory extends Component {
+class HomePage extends Component {
   render() {
     var categoryItems = this.props.categoryList.map((item, index) =>          
          <ProductsRow key={index} category={item}/>         
@@ -22,4 +22,4 @@ class ProductsByCategory extends Component {
   }
 }
 
-export default connect(mapStateToProps)(ProductsByCategory);
+export default connect(mapStateToProps)(HomePage);

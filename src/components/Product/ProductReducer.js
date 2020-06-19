@@ -1,4 +1,4 @@
-import menu from "../data.json";
+import menu from "../../data.json";
 
 const productReducer = (state = productList, action) => {  
   switch (action.type) {    
