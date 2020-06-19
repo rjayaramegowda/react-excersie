@@ -8,19 +8,14 @@ function mapStateToProps(state) {
 }
 
 class Product extends Component {
-
+   
    constructor(props) {
       super(props);
       this.editClickHandler = this.editClickHandler.bind(this);
-      this.state = {editable: false, price:0, available:false }
+      this.state = {...this.props.vo, editable: false}
    }
 
-   componentDidMount() {
-      this.setState({price: this.props.vo.price, available: this.props.vo.available })
-
-   }
-
-   editClickHandler() {      
+    editClickHandler() {      
       this.setState({editable: !this.state.editable})
    }
    
