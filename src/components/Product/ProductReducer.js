@@ -7,7 +7,8 @@ const productReducer = (state = productList, action) => {
     case "SAVE_PRODUCT":
       let item = state.filter((vo) => vo.itemId === action.data.itemId);
       let itemIndex = state.indexOf(item[0]);
-      state[itemIndex] = action.data;
+      
+      state.splice(itemIndex, 1, action.data);    
       return state;
 
     default:
