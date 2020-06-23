@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
@@ -7,16 +8,29 @@ function mapStateToProps(state) {
    };
 }
 
+function mapDispatchToProps(dispatch) {
+   return {
+      saveProduct: (vo) => dispatch({type: "SAVE_PRODUCT", data:vo})
+   };
+}
+
 class Product extends Component {
    
    constructor(props) {
       super(props);
       this.editClickHandler = this.editClickHandler.bind(this);
+      this.saveClickHandler = this.saveClickHandler.bind(this);
+
       this.state = {...this.props.vo, editable: false}
    }
 
     editClickHandler() {      
       this.setState({editable: !this.state.editable})
+   }
+
+   saveClickHandler() { 
+      console.log("[Product] saveClickHandler")     
+      this.props.saveProduct(this.state)
    }
    
    render() {
@@ -67,6 +81,8 @@ class Product extends Component {
                      <button className="btn btn-primary rounded-pill px-4"><i className="fa fa-spinner fa-spin mr-2" aria-hidden="true" /> Buy Now </button>
                      <button onClick={this.editClickHandler} className="btn btn-warning rounded-pill px-4 ml-2"><i className="fa fa-pencil mr-2" aria-hidden="true" /> Edit
                      </button>
+                     <button onClick={this.saveClickHandler} className="btn btn-success rounded-pill px-4 ml-2"><i className="fa fa-save mr-2" aria-hidden="true" /> Save
+                     </button>
                      
                   </div>
                </div>
@@ -76,4 +92,4 @@ class Product extends Component {
    }
 }
 
-export default connect(mapStateToProps)(Product);
+export default connect(mapStateToProps, mapDispatchToProps)(Product);
